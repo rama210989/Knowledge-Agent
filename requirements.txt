@@ -1,7 +1,7 @@
 streamlit
 pandas
-numpy
 openai==0.28.1
 faiss-cpu
 tqdm
-matplotlib==3.7.1
+numpy==1.23.5
+matplotlib==3.6.0

@@ -49,11 +49,16 @@ if query:
     query_embedding = get_embedding(query)
     query_vector = np.array(query_embedding).astype("float32").reshape(1, -1)
 
-    k = 5
+    k = 5  # Number of similar tickets to show
     distances, indices = index.search(query_vector, k)
 
     st.subheader("🎯 Top Similar Tickets:")
+    
+    # Iterate through the matching tickets and display all relevant details
     for idx, dist in zip(indices[0], distances[0]):
-        st.markdown(f"**🎟️ Ticket #{idx}** (Distance: `{dist:.4f}`)")
-        st.write(df.iloc[idx]['description'])
+        st.markdown(f"**🎟️ Ticket #{df.iloc[idx]['ticket_id']}** (Distance: `{dist:.4f}`)")  # Displaying Ticket ID
+        st.write(f"**Description:** {df.iloc[idx]['description']}")  # Description of the ticket
+        st.write(f"**Resolution:** {df.iloc[idx]['resolution']}")  # Resolution details (if available)
+        st.write(f"**Status:** {df.iloc[idx]['status']}")  # Status of the ticket (if applicable)
+        st.write(f"**Created Date:** {df.iloc[idx]['created_at']}")  # Date of ticket creation (if available)
         st.markdown("---")

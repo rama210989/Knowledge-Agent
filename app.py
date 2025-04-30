@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import faiss
 import openai
+import ast  # 👈 Needed to safely parse stringified lists from CSV
 
 st.set_page_config(page_title="Support Ticket Search", layout="centered")
 
@@ -26,11 +27,14 @@ def get_embedding(text, model="text-embedding-ada-002"):
 # Load data
 df = pd.read_csv("support_tickets.csv")
 
-# Load or create embeddings
+# Ensure embeddings column exists and is in correct format
 if 'embedding' not in df.columns:
     st.warning("Embeddings not found in CSV. Generating now...")
     df['embedding'] = df['description'].apply(lambda x: get_embedding(x))
     df.to_csv("support_tickets.csv", index=False)
+elif isinstance(df['embedding'].iloc[0], str):
+    # Convert stringified list back to Python list
+    df['embedding'] = df['embedding'].apply(ast.literal_eval)
 
 # Convert embeddings to numpy array
 embedding_matrix = np.array(df['embedding'].tolist()).astype("float32")

@@ -1,6 +1,5 @@
-openai==0.28.1
 streamlit
 pandas
 numpy
 faiss-cpu
-matplotlib
+openai==0.28.1

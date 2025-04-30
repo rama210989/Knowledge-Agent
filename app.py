@@ -18,7 +18,7 @@ import openai
 from openai.embeddings_utils import get_embedding
 
 # Set your OpenAI API key (or use st.secrets later for deployment)
-openai.api_key = st.secrets["OPENAI_API_KEY"] if "OPENAI_API_KEY" in st.secrets else "sk-..."
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 # Load data
 df = pd.read_csv("support_tickets.csv")

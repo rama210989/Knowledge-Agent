@@ -4,3 +4,4 @@ numpy
 openai==0.28.1
 faiss-cpu
 tqdm
+matplotlib==3.7.1

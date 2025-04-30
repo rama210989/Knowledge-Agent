@@ -5,7 +5,7 @@ import faiss
 import openai
 import ast  # 👈 Needed to safely parse stringified lists from CSV
 
-st.set_page_config(page_title="Support Ticket Search", layout="centered")
+st.set_page_config(page_title="Support Ticket Similarity Search", layout="centered")
 
 st.title("🔍 Support Ticket Similarity Search")
 st.markdown("Type a query to find similar past tickets.")
@@ -57,8 +57,7 @@ if query:
     # Iterate through the matching tickets and display all relevant details
     for idx, dist in zip(indices[0], distances[0]):
         st.markdown(f"**🎟️ Ticket #{df.iloc[idx]['ticket_id']}** (Distance: `{dist:.4f}`)")  # Displaying Ticket ID
+        st.write(f"**Title:** {df.iloc[idx]['title']}")  # Title of the ticket
         st.write(f"**Description:** {df.iloc[idx]['description']}")  # Description of the ticket
         st.write(f"**Resolution:** {df.iloc[idx]['resolution']}")  # Resolution details (if available)
-        st.write(f"**Status:** {df.iloc[idx]['status']}")  # Status of the ticket (if applicable)
-        st.write(f"**Created Date:** {df.iloc[idx]['created_at']}")  # Date of ticket creation (if available)
         st.markdown("---")

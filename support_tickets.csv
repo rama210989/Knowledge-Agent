@@ -1,0 +1,11 @@
+ticket_id,title,description,resolution
+1,App crashes on login,App crashes when attempting to login with Google account.,Fixed the OAuth token expiration issue on login.
+2,File upload fails,PDF files larger than 5MB fail to upload.,Increased file size limit in the server settings to 10MB.
+3,Password reset not working,Users are not receiving password reset emails.,Fixed SMTP server configuration and re-enabled the email service.
+4,Mobile app freezes,App freezes after updating to the latest version on Android.,Released a patch that resolves the compatibility issue with Android 12.
+5,Slow performance on dashboard,Dashboard takes too long to load when there are multiple filters applied.,Optimized database queries and reduced loading time by 40%.
+6,Unable to make payments,Payment gateway throws error during transaction.,Reconfigured the payment gateway integration to handle international cards.
+7,Search results inaccurate,The search bar shows irrelevant results for common queries.,Fixed the search algorithm to prioritize exact match keywords.
+8,Notification not received,Push notifications are not delivered to iOS devices.,Resolved the issue with the iOS notification service certificate renewal.
+9,Can't access account,Users are unable to access their accounts after recent update.,Addressed a bug in user authentication logic that occurred after the update.
+10,Missing user data,Some user data is missing after the migration process.,Investigated the migration process and restored missing records from backup.

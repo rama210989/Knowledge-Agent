@@ -5,3 +5,4 @@ faiss-cpu
 tqdm
 numpy==1.23.5
 matplotlib==3.6.0
+distutils  # Add distutils to ensure compatibility

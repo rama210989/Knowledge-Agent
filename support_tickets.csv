@@ -1,11 +1,41 @@
 ticket_id,title,description,resolution
-1,App crashes on login,App crashes when attempting to login with Google account.,Fixed the OAuth token expiration issue on login.
-2,File upload fails,PDF files larger than 5MB fail to upload.,Increased file size limit in the server settings to 10MB.
-3,Password reset not working,Users are not receiving password reset emails.,Fixed SMTP server configuration and re-enabled the email service.
-4,Mobile app freezes,App freezes after updating to the latest version on Android.,Released a patch that resolves the compatibility issue with Android 12.
-5,Slow performance on dashboard,Dashboard takes too long to load when there are multiple filters applied.,Optimized database queries and reduced loading time by 40%.
-6,Unable to make payments,Payment gateway throws error during transaction.,Reconfigured the payment gateway integration to handle international cards.
-7,Search results inaccurate,The search bar shows irrelevant results for common queries.,Fixed the search algorithm to prioritize exact match keywords.
-8,Notification not received,Push notifications are not delivered to iOS devices.,Resolved the issue with the iOS notification service certificate renewal.
-9,Can't access account,Users are unable to access their accounts after recent update.,Addressed a bug in user authentication logic that occurred after the update.
-10,Missing user data,Some user data is missing after the migration process.,Investigated the migration process and restored missing records from backup.
+1,Excel crashing on pivot table,User reports that Excel crashes whenever a pivot table is inserted on large datasets.,Updated Excel version and optimized pivot table source range.
+2,Dashboard not loading in Power BI,"Power BI dashboard fails to load completely, stuck on spinning icon.",Cleared Power BI cache and reloaded dataset from source.
+3,SQL query timing out,Long-running SQL query fails after 30 seconds with timeout error.,Optimized SQL by adding proper indexes and using LIMIT.
+4,Python script error in Jupyter,Python script throws ValueError when parsing CSV in Jupyter Notebook.,Added try-except block and fixed delimiter issue in script.
+5,Data mismatch in Tableau report,Tableau report shows different numbers than expected after data update.,Refreshed data extract and republished the Tableau workbook.
+6,Excel VLOOKUP not working,VLOOKUP formula returning N/A even though the value exists in the lookup table.,Fixed cell references and used IFERROR around VLOOKUP.
+7,Slow performance in Power BI,Users experiencing delays when interacting with filters on Power BI.,Improved model performance by reducing query dependencies.
+8,Unable to connect to SQL Server,"Database server not reachable from BI tool, causing connection errors.",Reconfigured firewall settings to allow SQL Server connection.
+9,Broken chart in dashboard,Bar chart not rendering properly after report update.,Regenerated chart visuals with updated parameters.
+10,Python pandas groupby not returning expected result,Pandas groupby function giving unexpected aggregation results.,Changed aggregation logic and verified with raw data.
+11,Power BI refresh fails,Automatic refresh in Power BI service failing due to credentials issue.,Re-entered credentials in Power BI service and tested refresh.
+12,CSV import error in Excel,Importing CSV into Excel skips some rows and misaligns columns.,Formatted CSV with consistent delimiters and header rows.
+13,Missing filters in Tableau,Filters in Tableau dashboard missing after recent publish.,Readded filters and re-published with proper permissions.
+14,Dashboard permissions issue,User not able to access shared dashboard due to permission settings.,Updated permissions in Tableau Server and notified user.
+15,Large Excel file won't open,Excel file above 100MB fails to open; crashes Excel.,Split file into smaller chunks and saved in binary format.
+16,Python error: Index out of range,List index out of range error when iterating over dataframe rows.,Added boundary checks to avoid index out of range error.
+17,Invalid date format in report,Report displays MM/DD/YYYY while client expects DD-MM-YYYY format.,Updated report templates with user-specific date format.
+18,Scheduled refresh not working,Dataflow refresh task not triggered as per schedule.,Manually triggered dataflow and fixed scheduling config.
+19,Duplicate rows in SQL output,Same row appearing multiple times after SQL execution.,De-duplicated result using DISTINCT in SQL.
+20,Wrong aggregation in dashboard,Dashboard totals not summing correctly; appears to be wrong aggregation.,Fixed aggregation logic in report builder.
+21,Can't open Tableau workbook,"Workbook throws error on open, saying workbook was created in newer version.",Opened file in latest version and saved in compatible format.
+22,Excel formula returns #VALUE!,Formula returns error after updating linked sheet.,Fixed reference errors and locked ranges properly.
+23,Error connecting to BigQuery,Connection error when accessing BigQuery from data pipeline.,Verified API key and project permissions for BigQuery.
+24,Power BI export to PDF fails,Export to PDF in Power BI crashes browser.,Reduced visual complexity and exported as PNG instead.
+25,No data in Jupyter notebook,Notebook loads but cells don't execute any code.,Restarted kernel and ensured proper package imports.
+26,Chart titles not updating,Titles on charts remain static even after changing parameters.,Set dynamic chart titles using parameter bindings.
+27,Incorrect values after data merge,Merged dataset shows misaligned or overwritten data.,Verified merge logic and fixed overlapping keys.
+28,Slow dashboard load in browser,Users report slow load time in browser version of dashboard.,Optimized dashboard for browser rendering.
+29,Python plot not displaying,Matplotlib plot not rendering inside notebook.,Installed missing plotting backend and re-ran cell.
+30,Excel file corrupted after update,File corrupted after system update; won't open properly.,Recovered from backup and avoided incompatible features.
+31,Null values not handled,Null values cause errors in downstream calculations.,Filled nulls with defaults before aggregation.
+32,Incorrect fiscal year mapping,Sales data assigned to wrong fiscal quarter in report.,Corrected fiscal mapping table with updated definitions.
+33,Data types not matching in merge,Merging two dataframes fails due to object vs integer type mismatch.,Converted types before merge to ensure compatibility.
+34,Power BI slicer not filtering,Slicer on region not affecting other visuals.,Fixed slicer relationships in data model.
+35,Excel freezes when filtering,App becomes unresponsive when user filters large data range.,Filtered data with helper columns to prevent crash.
+36,Jupyter kernel dies on large dataset,Kernel restarts automatically on loading dataset >1M rows.,Used Dask for handling large dataset in notebook.
+37,Old data showing in Power BI,Outdated values appear even after report refresh.,Cleared cache and reconnected data source.
+38,Formula breaks after copy,Formula changes when copying between sheets.,Used absolute references in formula to avoid shifting.
+39,SQL JOIN returns empty,INNER JOIN returns no rows though data exists in both tables.,Checked join keys and fixed inconsistent casing.
+40,Unable to publish Tableau dashboard,Publish to Tableau Server fails without visible error.,Checked publishing logs and re-published with clean cache.

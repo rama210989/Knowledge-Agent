@@ -50,4 +50,3 @@ if query:
         st.markdown(f"**🎟️ Ticket #{idx}** (Distance: `{dist:.4f}`)")
         st.write(df.iloc[idx]['description'])
         st.markdown("---")
-

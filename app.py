@@ -1,4 +1,8 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
+import faiss
+import openai
 
 st.set_page_config(page_title="Support Ticket Search", layout="centered")
 
@@ -11,14 +15,13 @@ if query:
     st.write("You searched for:", query)
     st.info("This is where we'll show the top matching tickets.")
 
-import pandas as pd
-import numpy as np
-import faiss
-import openai
-from openai.embeddings_utils import get_embedding
-
-# Set your OpenAI API key (or use st.secrets later for deployment)
+# Set your OpenAI API key (securely loaded from Streamlit Cloud secrets)
 openai.api_key = st.secrets["OPENAI_API_KEY"]
+
+# Helper function to get embedding directly from OpenAI API
+def get_embedding(text, model="text-embedding-ada-002"):
+    response = openai.Embedding.create(input=text, model=model)
+    return response["data"][0]["embedding"]
 
 # Load data
 df = pd.read_csv("support_tickets.csv")
@@ -26,11 +29,11 @@ df = pd.read_csv("support_tickets.csv")
 # Load or create embeddings
 if 'embedding' not in df.columns:
     st.warning("Embeddings not found in CSV. Generating now...")
-    df['embedding'] = df['description'].apply(lambda x: get_embedding(x, engine="text-embedding-ada-002"))
-    df.to_csv("support_tickets.csv", index=False)  # Optional: save embeddings
+    df['embedding'] = df['description'].apply(lambda x: get_embedding(x))
+    df.to_csv("support_tickets.csv", index=False)
 
 # Convert embeddings to numpy array
-embedding_matrix = np.array(df['embedding'].tolist())
+embedding_matrix = np.array(df['embedding'].tolist()).astype("float32")
 
 # Build FAISS index
 dimension = len(embedding_matrix[0])
@@ -39,7 +42,7 @@ index.add(embedding_matrix)
 
 # Process user query
 if query:
-    query_embedding = get_embedding(query, engine="text-embedding-ada-002")
+    query_embedding = get_embedding(query)
     query_vector = np.array(query_embedding).astype("float32").reshape(1, -1)
 
     k = 5
